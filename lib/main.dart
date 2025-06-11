@@ -1,13 +1,12 @@
 import 'package:blissfulmassage/home_page.dart';
-//import 'package:blissfulmassage/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const BlissFullMassage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class BlissFullMassage extends StatelessWidget {
+  const BlissFullMassage({super.key});
 
   // This widget is the root of your application.
   @override

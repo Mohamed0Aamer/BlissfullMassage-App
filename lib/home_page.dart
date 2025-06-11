@@ -7,39 +7,74 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xffC1E8FF),
         title: Row(
           children: [
-            // Image.asset('assets/logo.png', height: 30),
             SizedBox(width: 10),
             Text(
               'BlissFull Massage',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Color(0xff052659),
               ),
             ),
             Spacer(),
-            TextButton(
+
+            MaterialButton(
               onPressed: () {},
-              child: Text(
-                'Add Patient',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              color: Color(0xff7DA0C4),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "Add Patient",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(Icons.personal_injury),
+                ],
               ),
             ),
-            TextButton(
+            SizedBox(width: 13),
+            MaterialButton(
               onPressed: () {},
-              child: Text(
-                'Patient files ',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              color: Color(0xff7DA0C4),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "Patient File",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(Icons.file_copy),
+                ],
               ),
             ),
-            TextButton(
+            SizedBox(width: 13),
+            MaterialButton(
               onPressed: () {},
-              child: Text(
-                'Servies',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              color: Color(0xff7DA0C4),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "Service",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(Icons.money),
+                ],
               ),
             ),
           ],
