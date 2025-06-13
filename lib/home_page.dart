@@ -1,7 +1,8 @@
+import 'package:blissfulmassage/widget/textformfieldWidget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -11,7 +12,12 @@ class _HomePageState extends State<HomePage> {
   String? _selectedBookingType;
   final List<String> _bookingTypes = ['Walk-in', 'Appointment', 'House Call'];
   final TextEditingController _dobController = TextEditingController();
-
+  var nameController = TextEditingController();
+  var phoneController = TextEditingController();
+  var adressController = TextEditingController();
+  var complaintController = TextEditingController();
+  var raceController = TextEditingController();
+  var diagnosisController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,32 +53,33 @@ class _HomePageState extends State<HomePage> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  labelText: "Full Name",
-                                  border: OutlineInputBorder(),
-                                ),
+                              Textformfieldwidget(
+                                controller: nameController,
+                                hintText: "Name",
+                              ),
+
+                              SizedBox(height: 10),
+                              Textformfieldwidget(
+                                controller: phoneController,
+                                hintText: "Phone",
                               ),
                               SizedBox(height: 10),
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  labelText: "race",
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  labelText: "Phone",
-                                  border: OutlineInputBorder(),
-                                ),
+                              Textformfieldwidget(
+                                controller: adressController,
+                                hintText: "Adress",
                               ),
                               SizedBox(height: 10),
                               TextFormField(
                                 controller: _dobController,
                                 readOnly: true,
                                 decoration: InputDecoration(
+                                  fillColor: Color(0xff5483b3),
+                                  filled: true,
                                   labelText: "Date of Birth",
+                                  labelStyle: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
                                   border: OutlineInputBorder(),
                                   suffixIcon: Icon(Icons.calendar_today),
                                 ),
@@ -90,30 +97,31 @@ class _HomePageState extends State<HomePage> {
                                 },
                               ),
                               SizedBox(height: 10),
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  labelText: "Address",
-                                  border: OutlineInputBorder(),
-                                ),
+                              Textformfieldwidget(
+                                controller: raceController,
+                                hintText: "Race",
                               ),
                               SizedBox(height: 10),
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  labelText: "dr's diagnosis",
-                                  border: OutlineInputBorder(),
-                                ),
+                              Textformfieldwidget(
+                                controller: complaintController,
+                                hintText: "Complaint",
                               ),
                               SizedBox(height: 10),
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  labelText: "complaint",
-                                  border: OutlineInputBorder(),
-                                ),
+                              Textformfieldwidget(
+                                controller: diagnosisController,
+                                hintText: "Dr,s diagnosis",
                               ),
                               SizedBox(height: 15),
+
                               DropdownButtonFormField<String>(
                                 decoration: InputDecoration(
+                                  fillColor: Color(0xff5483b3),
+                                  filled: true,
                                   labelText: 'Booking Type',
+                                  labelStyle: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
                                   border: OutlineInputBorder(),
                                 ),
                                 value: _selectedBookingType,
@@ -200,14 +208,14 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               ListTile(
                                 title: Text(
-                                  "Name",
+                                  "Mohamed Farouk",
                                   style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.black,
                                   ),
                                 ),
                                 subtitle: Text(
-                                  "phone",
+                                  "01094419161",
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: Colors.black,
