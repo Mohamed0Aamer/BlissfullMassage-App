@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                         "Add New Patient",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      content: Container(
+                      content: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.7,
                         child: SingleChildScrollView(
                           child: Column(
@@ -192,12 +192,30 @@ class _HomePageState extends State<HomePage> {
                         "Patient File",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      content: Container(
+                      content: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.7,
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
-                            children: [ListTile()],
+                            children: [
+                              ListTile(
+                                title: Text(
+                                  "Name",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  "phone",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                trailing: Icon(Icons.edit),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -223,7 +241,29 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(width: 13),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      backgroundColor: Color(0xffC1E8FF),
+                      title: Text(
+                        "Service",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      content: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [ListTile()],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
               color: Color(0xff7DA0C4),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
