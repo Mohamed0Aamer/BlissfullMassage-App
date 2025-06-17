@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042592806847",
+    "project_id": "blissfullmassage-4d0ec",
+    "storage_bucket": "blissfullmassage-4d0ec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042592806847:android:0d5e29d36e1b9a123d530a",
+        "android_client_info": {
+          "package_name": "com.example.blissfulmassage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwlA-8hgR2STIm-ezqVW-5AVeFjQy_Q-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

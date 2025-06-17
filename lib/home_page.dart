@@ -1,8 +1,12 @@
 import 'package:blissfulmassage/widget/textformfieldWidget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  HomePage({super.key}); //{
+  //  getData();
+  // }
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -18,6 +22,9 @@ class _HomePageState extends State<HomePage> {
   var complaintController = TextEditingController();
   var raceController = TextEditingController();
   var diagnosisController = TextEditingController();
+  var patient = FirebaseFirestore.instance.collection("patient");
+
+  List dataList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                                   labelText: "Date of Birth",
                                   labelStyle: TextStyle(
                                     fontSize: 20,
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   ),
                                   border: OutlineInputBorder(),
                                   suffixIcon: Icon(Icons.calendar_today),
@@ -120,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                                   labelText: 'Booking Type',
                                   labelStyle: TextStyle(
                                     fontSize: 20,
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   ),
                                   border: OutlineInputBorder(),
                                 ),
@@ -149,7 +156,8 @@ class _HomePageState extends State<HomePage> {
                           child: Text("Cancel"),
                         ),
                         ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
+                            await addPatient();
                             Navigator.of(context).pop();
                           },
                           style: ElevatedButton.styleFrom(
@@ -187,91 +195,28 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-
             SizedBox(width: 13),
             MaterialButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      backgroundColor: Color(0xffC1E8FF),
-                      title: Text(
-                        "Patient File",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      content: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  "Mohamed Farouk",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  "01094419161",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                trailing: Icon(Icons.edit),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
+              onPressed: () {},
               color: Color(0xff7DA0C4),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadiusGeometry.circular(10),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    "Patient File",
+                    "Patient Files",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(width: 5),
-                  Icon(Icons.file_copy),
+                  Icon(Icons.file_open),
                 ],
               ),
             ),
             SizedBox(width: 13),
             MaterialButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      backgroundColor: Color(0xffC1E8FF),
-                      title: Text(
-                        "Service",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      content: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [ListTile()],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
+              onPressed: () {},
               color: Color(0xff7DA0C4),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -292,5 +237,26 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Future<void> addPatient() async {
+    await patient
+        .add({
+          "name": nameController.text,
+          "phone": phoneController.text,
+          "adress": adressController.text,
+          "complaint": complaintController.text,
+          "race": raceController.text,
+          "daignosis": diagnosisController.text,
+          "Date of Brith": _dobController.text,
+          "Booking Type": _selectedBookingType,
+        })
+        .then((value) => print("patient added"))
+        .catchError((error) => print("failed to added : $error"));
+  }
+
+  getData() async {
+    QuerySnapshot querySnapshot = await patient.get();
+    dataList.addAll(querySnapshot.docs);
   }
 }

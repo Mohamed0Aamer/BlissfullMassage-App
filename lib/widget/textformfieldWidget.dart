@@ -5,7 +5,7 @@ class Textformfieldwidget extends StatelessWidget {
     super.key,
     required this.controller,
     required this.hintText,
-    //required this.validator
+    // required this.validator
   });
   TextEditingController controller;
   String hintText;
@@ -20,7 +20,7 @@ class Textformfieldwidget extends StatelessWidget {
         fillColor: Color(0xff5483b3),
         filled: true,
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.white),
+        hintStyle: TextStyle(color: Colors.black),
         border: OutlineInputBorder(),
       ),
     );
