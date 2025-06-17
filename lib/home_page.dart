@@ -1,3 +1,4 @@
+import 'package:blissfulmassage/patient_files_screen.dart';
 import 'package:blissfulmassage/widget/textformfieldWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -197,7 +198,12 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(width: 13),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PatientFilesScreen()),
+                );
+              },
               color: Color(0xff7DA0C4),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadiusGeometry.circular(10),
