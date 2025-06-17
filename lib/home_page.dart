@@ -1,4 +1,5 @@
 import 'package:blissfulmassage/patient_files_screen.dart';
+import 'package:blissfulmassage/widget/appointment_table.dart';
 import 'package:blissfulmassage/widget/textformfieldWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -220,28 +221,10 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            SizedBox(width: 13),
-            MaterialButton(
-              onPressed: () {},
-              color: Color(0xff7DA0C4),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "Service",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(width: 5),
-                  Icon(Icons.money),
-                ],
-              ),
-            ),
           ],
         ),
       ),
+      body: AppointmentTable(),
     );
   }
 
